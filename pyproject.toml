@@ -1,0 +1,104 @@
+[project]
+name = "teacher"
+version = "0.1.0"
+description = "Teacher pet project"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "fastapi[standard]>=0.116.1",
+    "uvicorn>=0.35.0",
+]
+
+[dependency-groups]
+dev = [
+    "flake8>=7.3.0",
+    "flake8-import-rules>=1.0.0",
+    "mypy>=1.17.1",
+    "pytest>=8.4.1",
+    "pytest-asyncio>=1.1.0",
+    "ruff>=0.12.7",
+]
+
+[tool.ruff]
+target-version = 'py311'
+line-length = 120
+extend-exclude = [
+    "migrations",
+]
+
+[tool.ruff.lint]
+extend-select = [
+    "F",  # PyFlakes
+    "E",  # pycodestyle [Error]
+    "W", # pycodestyle [Warning]
+    "I", # isort
+    "YTT", # flake8-2020
+    "ASYNC",  # flake8-async
+    "F", # flake8-bugbear
+    "COM", # flake8-commas
+    "C4", # flake8-comprehensions
+    "ISC", # flake8-implicit-str-concat
+    "ICN", # flake8-import-conventions
+    "PIE", # flake8-pie
+    "T20", # flake8-print
+    "PYI", # flake8-pyi
+    "PT", # flake8-pytest-style
+    "Q", # flake8-quotes
+    "RSE", # flake8-raise
+    "RET", # flake8-return
+    "SLOT", # flake8-slots
+    "SIM", # flake8-simplify
+    "TID", # flake8-tidy-imports
+    "INT", # flake8-gettext
+    "PD", # pandas-vet
+    "FLY", # flynt
+    "LOG", # flake8-logging
+]
+exclude = [
+    "venv",
+    ".venv",
+    "migrations"
+]
+ignore = [
+    "PD011",  # Use `.to_numpy()` instead of `.values`
+    "PT019",  # X without value is injected as parameter, use `@pytest.mark.usefixtures` instead
+    "PT011",  # `pytest.raises(X)` is too broad, set the `match` parameter or use a more specific exception
+    "E701",   # multiple statements on one line (colon)
+    "COM812", # missing whitespace after ','
+    "ISC001", # Implicitly concatenated string literals on one line
+    "SIM108", # forces to use ternary operators
+    "SIM117", # forces to use multiple with instead of nested one.
+    "C408",   # forst to use {"a": 1} instead of dict(a=1)
+]
+isort.lines-after-imports = 2
+
+
+[tool.ruff.format]
+exclude = [
+    "venv",
+    ".venv",
+    "migrations"
+]
+
+[tool.mypy]
+files = ["src"]
+ignore_missing_imports = true
+# src.projects.infrastructure.review.legacy/.* excluded temporary, will be removed in DEV-35280
+exclude = ["migrations"]
+# Start off with these
+warn_unused_configs = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+# Getting these passing should be easy
+strict_equality = true
+extra_checks = true
+# Strongly recommend enabling this one as soon as you can
+check_untyped_defs = true
+# These shouldn't be too much additional work, but may be tricky to
+# get passing if you use a lot of untyped libraries
+#disallow_subclassing_any = True
+#disallow_untyped_decorators = True
+#disallow_any_generics = True
+# Comment the line below to get way more errors
+follow_imports = "skip"
+plugins = ["pydantic.mypy"]
