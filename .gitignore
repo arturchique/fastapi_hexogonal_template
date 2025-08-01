@@ -7,3 +7,9 @@
 *.swp
 *.swo
 *~
+
+# Mypy cache
+.mypy_cache
+
+# Local settings
+.env
