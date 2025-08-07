@@ -2,6 +2,15 @@
 
 A modern FastAPI application template built with Domain-Driven Design (DDD) principles, featuring JWT authentication, PostgreSQL database, and Docker containerization.
 
+Main TODOs:
+- Logging + Tracing
+- Env vars scripts
+- Code generetion
+
+What is doesn't have:
+- Observability tools (such as Sentry, Prometheus, OTel)
+- Event driven support
+
 ## 🏗️ Architecture Overview
 
 This application follows Domain-Driven Design (DDD) patterns and Clean Architecture principles to ensure maintainable, testable, and scalable code.
