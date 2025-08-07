@@ -12,12 +12,9 @@ This application follows Domain-Driven Design (DDD) patterns and Clean Architect
 teacher/
 ├── src/
 │   ├── app/                    # Application Layer (HTTP handlers, schemas)
-│   │   ├── auth/              # Authentication endpoints
-│   │   ├── progress/          # Progress tracking endpoints
-│   │   └── dependencies/      # FastAPI dependency injection
+│   │   └── auth/              # Authentication endpoints
 │   ├── domain/                # Domain Layer (business logic)
 │   │   ├── user/             # User aggregate and business rules
-│   │   └── progress/         # Progress domain models
 │   ├── infra/                 # Infrastructure Layer (database, external services)
 │   │   ├── migrations/       # Alembic database migrations
 │   │   └── user/            # User repository implementation
@@ -197,25 +194,6 @@ username=john_doe&password=secure_password
 **Get Current User:**
 ```http
 GET /auth/me
-Authorization: Bearer <jwt_token>
-```
-
-### Progress Tracking
-
-**Create Progress:**
-```http
-POST /progress/
-Authorization: Bearer <jwt_token>
-Content-Type: application/json
-
-{
-    "lang": "en"
-}
-```
-
-**Get Progress:**
-```http
-GET /progress/{lang}
 Authorization: Bearer <jwt_token>
 ```
 
