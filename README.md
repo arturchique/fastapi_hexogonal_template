@@ -311,7 +311,3 @@ FastAPI automatically generates interactive API documentation:
 3. Run linting before committing: `make lint`
 4. Use conventional commit messages
 5. Update documentation for new features
-
-## 📄 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
